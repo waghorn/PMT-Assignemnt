@@ -45,7 +45,7 @@
 					case 'view-status':
 					case 'view-host':		
 					case 'manage-host':
-						include_once('pages/' . $page);
+						include_once('pages/' . $page . '.php');
 						break;
 					default:
 						include_once('pages/error.php');
