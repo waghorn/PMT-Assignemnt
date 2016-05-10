@@ -94,10 +94,12 @@
 		if (!$fp) {
 			addToLog($errno, $hostId);
 		}
-		else if ($time > 5000) {
+		else if ($time > 500) {
 			//Set to orange
 		}
-		else
+		else {
+			//Set to green
+		}
 		fclose($fp);
 	}
 	
