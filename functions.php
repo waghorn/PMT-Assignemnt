@@ -1,4 +1,5 @@
 <?php
+	//Gets the status of all servers for the homepage
 	function getStatus() {
 		include_once('database-connection.php');
 		$connection = new DatabaseConnection();
@@ -52,7 +53,7 @@
 		unset($connection);
 		return $rows;
 	}
-
+	// Outputs each host and status on the homepage
 	function outputHost($row) {
 		echo '<tr>';
 		if ($row['faultIsError'] === 0) {
@@ -64,4 +65,49 @@
 		echo '<td><a href="/view-host/' . $row['hostID'] . '" class="btn-default"><img src="/resources/manage-icon.png"></a></td>';
 		echo '</tr>';
 	}
+	
+	/*	Pings the destination address
+		Takes the IP address and Port number
+	*/
+	function ping($address, $port) {
+		$fp = fsockopen($address, $port, $errno, $errstr, 30)
+	}
+	
+	// Gets
+	function getHost() {
+		
+	}
+	
+	function addHost() {
+		
+	}
+	
+	function searchHost() {
+	
+	}
+	
+	function updateHost() {
+		
+	}
+	
+	function deleteHost() {
+		
+	}
+	
+	function getHostLogs() {
+		
+	}
+	
+	function addToLog() {
+		
+	}
+	
+	function deleteLogEntry() {
+		
+	}
+	
+	function getError() {
+		
+	}
+
 ?>
