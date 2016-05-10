@@ -2,7 +2,19 @@
 	include_once('functions.php');
 	
 	$page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 'view-status';  //default page is 'view-status' page
-    $title = ucwords(str_replace('-',' ', $page)); //converts the page to readable text
+    	$hostID = isset($_GET['hostID']) ? htmlspecialchars($_GET['hostID']) : null;
+
+	//Whitelist the possible pages, else include the error page
+	switch ($page) {
+		case 'view-status':
+		case 'view-host':		
+		case 'manage-host':
+			break;
+		default:
+			$page = 'error';
+	}
+
+	$title = ucwords(str_replace('-',' ', $page)); //converts the page to readable text
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -27,32 +39,20 @@
 	<div id="wrapper">
 		<header>
 			<section id="logo-group">
-				<img src="/resources/logo.png" height="40">
+				<a href="/"><img src="/resources/logo.png" height="40"></a>
 			</section>
 			<section id="search-group">
 				<input type="text" id="search-bar">
-				<button class="btn btn-primary" id="search-host" onclick=""><img src="/resources/search.png"></button>
+				<button class="btn btn-primary" id="search-host" onclick=""><img src="/resources/search-icon.png" height="15"></button>
 			</section>
 			<section id="add-group">
-				<button id="add-host" onclick=""><img src="/resources/add.png"></button>
-			</section>
-			<section id="view-group">
-			<!-- Anything we need to change with regards to the users interaction. all else is template -->
+				<button class="btn btn-success" id="add-host" onclick=""><img src="/resources/add-icon.png" height="15"></button>
 			</section>
 		</header>
 		<main>
 			<h1><?php echo $title; ?></h1>
 			<?php
-			    //Whitelist the possible pages, else include the error page
-				switch ($page) {
-					case 'view-status':
-					case 'view-host':		
-					case 'manage-host':
-						include_once('pages/' . $page . '.php');
-						break;
-					default:
-						include_once('pages/error.php');
-				}
+				include_once('pages/' . $page . '.php');
 			?>
 		</main>
 		<footer>
