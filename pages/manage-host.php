@@ -1,1 +1,1 @@
-Manage post page!
+Manage host page! - This page is for hostID <?php echo $hostID; ?>
