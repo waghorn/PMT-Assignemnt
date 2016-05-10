@@ -85,14 +85,16 @@
 	}
 	
 	/*
-		Adds host to the database
+		Adds host to the database. Returns user to View Status page on completion
 	*/
 	function addHost() {
 		
 	}
 	
 	/*
-		Searches for host
+		Searches for host. Determines the whether the search term is an IP address, host name etc.
+		Takes a search term
+		Calls getHost()
 	*/
 	function searchHost($searchTerm) {
 	
@@ -129,11 +131,18 @@
 		
 	}
 	
+	/*
+		Deletes log entries after set amount of time
+	*/
 	function deleteLogEntry() {
 		
 	}
 	
-	function getError() {
+	/*
+		Gets error information
+		Takes fault ID
+	*/
+	function getError($faultId) {
 		
 	}
 
