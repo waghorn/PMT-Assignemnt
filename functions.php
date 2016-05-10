@@ -1,4 +1,5 @@
 <?php
+	//Gets the status of all servers for the homepage
 	function getStatus() {
 		include_once('database-connection.php');
 		$connection = new DatabaseConnection();
@@ -33,7 +34,7 @@
 		unset($connection);
 		return $rows;
 	}
-
+	// Outputs each host and status on the homepage
 	function outputHost($row) {
 		echo '<div class="host-container">';
 		echo '<a class="host-view-section btn btn-default btn-default-no-end-right" href="/view-host/' . $row['hostID'] . '" class="view-host-link">';
@@ -77,6 +78,100 @@
 		unset($connection);
 		return $rows;
 	}
+<<<<<<< HEAD
+	
+	/*	
+		Pings the destination address
+		Takes the IP address and Port number
+		Returns Error number if ping fails or 'Thumbs up' if ping returns successful
+	*/
+	function ping($address, $port) {
+		$start = microtime(true);
+		$fp = fsockopen($address, $port, $errno, $errstr, 30);
+		$stop = microtime(true);
+		$time = ($stop - $start) * 1000;
+		
+		if (!$fp) {
+			addToLog($errno, $hostId);
+		}
+		else {
+			//Thumbs up
+		}		
+		fclose($fp);
+	}
+	
+	
+	/*
+		Gets host data to display
+		Takes host ID 
+	*/
+	function getHost($hostId) {
+		
+	}
+	
+	/*
+		Adds host to the database. Returns user to View Status page on completion
+	*/
+	function addHost() {
+		
+	}
+	
+	/*
+		Searches for host. Determines the whether the search term is an IP address, host name etc.
+		Takes a search term
+		Calls getHost()
+	*/
+	function searchHost($searchTerm) {
+	
+	}
+	
+	/*
+		Updates host data
+		Takes host ID
+	*/
+	function updateHost($hostId) {
+		
+	}
+	
+	/*
+		Deletes host data from the database
+		Takes host ID
+	*/
+	function deleteHost($hostId) {
+		
+	}
+	/*
+		Gets logs for the host from the database
+		Takes host ID
+	*/
+	function getHostLogs($hostId) {
+		
+	}
+	
+	/*
+		Adds error to error log
+		Takes host ID and fault ID
+	*/
+	function addToLog($hostId, $faultid) {
+		
+	}
+	
+	/*
+		Deletes log entries after set amount of time
+	*/
+	function deleteLogEntry() {
+		
+	}
+	
+	/*
+		Gets error information
+		Takes fault ID
+	*/
+	function getError($faultId) {
+		
+	}
+
+=======
 
 	function outputPing($row) {
 		echo '<tr class="ping">';
@@ -150,4 +245,5 @@
 		}
 		echo ' | ' . $host['hostDescription'];
 	}
+>>>>>>> refs/remotes/origin/master
 ?>
