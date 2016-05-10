@@ -94,9 +94,10 @@
 		if (!$fp) {
 			addToLog($errno, $hostId);
 		}
-		else {
-			//Thumbs up
-		}		
+		else if ($time > 5000) {
+			//Set to orange
+		}
+		else
 		fclose($fp);
 	}
 	
