@@ -103,46 +103,16 @@
 		fclose($fp);
 	}
 	
-	
-	/*
-		Gets host data to display
-		Takes host ID 
-	*/
-	function getHost($hostId) {
-		
-	}
-	
-	/*
-		Adds host to the database. Returns user to View Status page on completion
-	*/
-	function addHost() {
-		
-	}
-	
 	/*
 		Searches for host. Determines the whether the search term is an IP address, host name etc.
 		Takes a search term
 		Calls getHost()
 	*/
 	function searchHost($searchTerm) {
-	
-	}
-	
-	/*
-		Updates host data
-		Takes host ID
-	*/
-	function updateHost($hostId) {
 		
+		getHost($hostId)
 	}
-	
-	/*
-		Deletes host data from the database
-		Takes host ID
-	*/
-	function deleteHost($hostId) {
-		
-	}
+
 	/*
 		Gets logs for the host from the database
 		Takes host ID
