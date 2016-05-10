@@ -175,7 +175,7 @@
 =======
 
 	function outputPing($row) {
-		echo '<tr class="ping">';
+		echo '<tr>';
 		echo '<td><img src="/resources/';
 		if ($row['faultIsError'] == 0) {
 			echo 'green';
