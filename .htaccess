@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^manage-host/([0-9]+)$ index.php?page=manage-host&hostID=$1 [NC]
+RewriteRule ^view-host/([0-9]+)$ index.php?page=view-host&hostID=$1 [NC]
+RewriteRule ^view-status index.php?page=view-status [NC]
+ RewriteRule ^([a-z-]+)$ index.php?page=$1 [NC]

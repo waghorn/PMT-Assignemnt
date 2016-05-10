@@ -3,67 +3,77 @@
 	function getStatus() {
 		include_once('database-connection.php');
 		$connection = new DatabaseConnection();
-		$rows = $connection->runQuery('
-			SELECT
+		$rows = $connection->runQuery("
+			SELECT 
 				h.hostID,
-				hostName,
-				hostOct1,
-				hostOct2,
-				hostOct3,
-				hostOct4,
-				(
-					SELECT
-						pingTime
-					FROM
-						ping_Table p
-					WHERE
-						p.hostID = h.hostID
-					ORDER BY
-						pingTime DESC
-					LIMIT
-						1
-				) AS pingTime,
-				(
-					SELECT
-						pingResponse
-					FROM
-						ping_Table p
-					WHERE
-						p.hostID = h.hostID
-					ORDER BY
-						pingTime DESC
-					LIMIT
-						1
-				) AS pingResponse,
-				(
-					SELECT
-						pingFaultID
-					FROM
-						ping_Table p
-					WHERE
-						p.hostID = h.hostID
-					ORDER BY
-						pingTime DESC
-					LIMIT
-						1
-				) AS pingFaultID
-				FROM
-					host_Table AS h
-		');
+        			hostName,
+        			CONCAT(hostOct1, '.', hostOct2, '.', hostOct3, '.', hostOct4) AS hostIPAddress,
+        			hostPort,
+        			hostStatus,
+        			faultIsError
+			FROM
+				host_Table h,
+        			ping_Table p,
+        			fault_Table f
+			WHERE
+				f.faultID = p.pingFaultID
+			AND
+				pingID = 
+        				(
+					 SELECT
+                				 pingID
+                 			 FROM
+                 				 ping_Table
+                			 WHERE
+                 				 ping_Table.hostID = h.hostID
+                 			 ORDER BY 
+                 				 pingTime DESC
+                 			 LIMIT 1
+                			)
+		");
 		unset($connection);
 		return $rows;
 	}
 	// Outputs each host and status on the homepage
 	function outputHost($row) {
-		echo '<tr>';
-		if ($row['faultIsError'] === 0) {
-			echo '<td><img src="/resources/green-icon.png" height="15"></td>';
+		echo '<div class="host">';
+		echo '<a href="/view-host/' . $row['hostID'] . '" class="view-host-link"><img src="/resources/';
+		if ($row['hostStatus'] == 0) {
+			echo 'grey';
+		} else if ($row['faultIsError'] == 0) {
+			echo 'green';
 		} else {
-			echo '<td><img src="/resources/red-icon.png" height="15"></td>';
+			echo 'red';
 		}
-		echo '<td>' . $row['hostName'] . '</td>';
-		echo '<td><a href="/view-host/' . $row['hostID'] . '" class="btn-default"><img src="/resources/manage-icon.png"></a></td>';
-		echo '</tr>';
+		echo '-icon.png" height="20">';
+		echo $row['hostName'] . '</a>';
+		echo '<a href="/manage-host/' . $row['hostID'] . '" class="btn btn-default manage-host-link">&nbsp;</a>';
+		echo '</div>';
+	}
+
+	function getPings($hostID) {
+		include_once('database-connection.php');
+		$connection = new DatabaseConnection();
+		$rows = $connection->runQuery("
+			SELECT 
+				pingID,
+				pingTime,
+				pingResponse,
+				pingFaultID,
+				faultIsError
+			FROM
+				ping_Table p,
+				fault_Table f
+			WHERE
+				f.faultID = p.pingFaultID
+			AND
+				p.hostID = ?
+			ORDER BY
+				p.pingTime DESC
+			LIMIT 100
+		", array($hostID));
+		unset($connection);
+		return $rows;
 	}
 	
 	/*	
