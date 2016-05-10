@@ -35,8 +35,9 @@
 	}
 
 	function outputHost($row) {
-		echo '<div class="host">';
-		echo '<a href="/view-host/' . $row['hostID'] . '" class="view-host-link"><img src="/resources/';
+		echo '<div class="host-container">';
+		echo '<a class="host-view-section btn btn-default btn-default-no-end-right" href="/view-host/' . $row['hostID'] . '" class="view-host-link">';
+		echo '<img src="/resources/';
 		if ($row['hostStatus'] == 0) {
 			echo 'grey';
 		} else if ($row['faultIsError'] == 0) {
@@ -44,9 +45,10 @@
 		} else {
 			echo 'red';
 		}
-		echo '-icon.png" height="20">';
-		echo $row['hostName'] . '</a>';
-		echo '<a href="/manage-host/' . $row['hostID'] . '" class="btn btn-default manage-host-link">&nbsp;</a>';
+		echo '-icon.png" height="25">';
+		echo $row['hostName'];
+		echo '</a>';
+		echo '<a href="/manage-host/' . $row['hostID'] . '" class="btn btn-default btn-default-no-end-left manage-host-link">&nbsp;</a>';
 		echo '</div>';
 	}
 
