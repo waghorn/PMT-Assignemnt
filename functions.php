@@ -82,7 +82,18 @@
 		Returns Error number if ping fails or 'Thumbs up' if ping returns successful
 	*/
 	function ping($address, $port) {
-		$fp = fsockopen($address, $port, $errno, $errstr, 30)
+		$start = microtime(true);
+		$fp = fsockopen($address, $port, $errno, $errstr, 30);
+		$stop = microtime(true);
+		$time = ($stop - $start) * 1000;
+		
+		if (!$fp) {
+			addToLog($errno, $hostId);
+		}
+		else {
+			//Thumbs up
+		}		
+		fclose($fp);
 	}
 	
 	
