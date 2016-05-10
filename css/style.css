@@ -30,15 +30,6 @@ footer {
 	right: 0;
 }
 
-table {
-	width: 100%;
-}
-
-td, th {
-    	border: 1px solid #aaa;
-	padding: 0.5em;
-}
-
 .host {
 	display: inline-block;
 	margin: 0.5em 0;
@@ -135,4 +126,26 @@ td, th {
 
 .manage-host-link:hover {
 	background-color: #2b73b0;
+}
+
+.host-summary-container{
+	width: 100%;
+	color: white;
+	background-color: gray;
+	display: block;
+	font-size: 1.7em; 
+	padding: 0.5em
+}
+
+.host-summary-container > a{
+	float: right;
+	margin: 0;
+}
+
+.table{
+	text-align: center;
+}
+
+.table th{
+	text-align: center;
 }
