@@ -66,39 +66,66 @@
 		echo '</tr>';
 	}
 	
-	/*	Pings the destination address
+	/*	
+		Pings the destination address
 		Takes the IP address and Port number
+		Returns Error number if ping fails or 'Thumbs up' if ping returns successful
 	*/
 	function ping($address, $port) {
 		$fp = fsockopen($address, $port, $errno, $errstr, 30)
 	}
 	
-	// Gets
-	function getHost() {
+	
+	/*
+		Gets host data to display
+		Takes host ID 
+	*/
+	function getHost($hostId) {
 		
 	}
 	
+	/*
+		Adds host to the database
+	*/
 	function addHost() {
 		
 	}
 	
-	function searchHost() {
+	/*
+		Searches for host
+	*/
+	function searchHost($searchTerm) {
 	
 	}
 	
-	function updateHost() {
+	/*
+		Updates host data
+		Takes host ID
+	*/
+	function updateHost($hostId) {
 		
 	}
 	
-	function deleteHost() {
+	/*
+		Deletes host data from the database
+		Takes host ID
+	*/
+	function deleteHost($hostId) {
+		
+	}
+	/*
+		Gets logs for the host from the database
+		Takes host ID
+	*/
+	function getHostLogs($hostId) {
 		
 	}
 	
-	function getHostLogs() {
-		
-	}
-	
-	function addToLog() {
+	/*
+		Adds error to error log
+		Takes host ID and fault ID
+	*/
+	function addToLog($hostId, $faultid) {
 		
 	}
 	
