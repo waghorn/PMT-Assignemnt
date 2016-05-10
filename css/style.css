@@ -6,6 +6,7 @@ body, html {
 	font-family: Verdana, sans-serif;
 	padding: 0;
 	margin: 0;
+	background-color: #fdfdfd;
 }
 
 header, footer {
@@ -19,7 +20,6 @@ header > section {
 }
 
 main {
-	background-color: #fdfdfd;
 	padding: 1em;
 }
 
@@ -34,8 +34,9 @@ table {
 	width: 100%;
 }
 
-.host > td {
-	padding: 1em;
+td, th {
+    	border: 1px solid #aaa;
+	padding: 0.5em;
 }
 
 .host {
@@ -43,14 +44,14 @@ table {
 	margin: 0.5em 0;
 	width: 100%;
 	background-color: #eee;
-	border: 2px solid #aaa;
+	border: none;
 	height: 3em;
 }
 
 .host .view-host-link {
 	display: inline-block;
-	line-height: 2.5em;
 	padding-left: 0.5em;
+	border: none;
 	text-decoration: none;
 }
 
@@ -58,18 +59,80 @@ table {
 	background-color: #f4f4f4;
 }
 
+.host-view-section {
+	line-height: 2.3em;
+	text-align: left;
+}
+
+.host-view-section > img{
+	float: left;
+	margin-right: 1em;
+	height: 2.1em;
+	width: 2.1em;
+}
+
+.btn-default {
+	background-color: #eee;
+	height: 3em;
+	border: none;
+}
+
+.btn-default-no-end-left{
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left-style: none;
+	width: 10%;
+}
+
+.btn-default-no-end-right{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right-style: none;
+	width: 90%;
+}
+
+.host-container {
+	display: inline-block;
+	margin: 0.2em 0;
+	width: 100%;
+}
+
+
 #add-group {
 	float: right;
 }
 
-.host .manage-host-link {
-	display: inline-block;
-	float: right;
-	padding: 0.5em;
-	width: 3em;
-	background-image: url('/resources/manage-icon.png');
-    	background-size: 70% 70%;
-    	background-color: #337ab7;
-    	background-position: center;
+.add-host-link, .search-host-link, .manage-host-link, .delete-host-link, .save-host-link {
+    	background-size: 35px 35px;
+   	background-position: center;
     	background-repeat: no-repeat;
+}
+
+.add-host-link {
+	background-image: url('/resources/add-icon.png');
+    	background-color: #5cb85c;
+}
+
+.search-host-link {
+	background-image: url('/resources/search-icon.png');
+    	background-color: #337ab7;
+}
+
+.delete-host-link {
+	background-image: url('/resources/delete-icon.png');
+    	background-color: #c9302c;
+}
+
+.save-host-link {
+	background-image: url('/resources/save-icon.png');
+    	background-color: #337ab7;
+}
+
+.manage-host-link {
+	background-image: url('/resources/manage-icon.png');
+    	background-color: #337ab7;
+}
+
+.manage-host-link:hover {
+	background-color: #2b73b0;
 }
