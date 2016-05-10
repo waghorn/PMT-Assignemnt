@@ -31,10 +31,13 @@
 			</section>
 			<section id="search-group">
 				<input type="text" id="search-bar">
-				<button class="btn btn-primary" id="search-host" onclick=""><img src="/resources/search-icon.png"></button>
+				<button class="btn btn-primary" id="search-host" onclick=""><img src="/resources/search.png"></button>
 			</section>
 			<section id="add-group">
-				<button id="add-host" onclick=""><img src="/resources/add-icon.png"></button>
+				<button id="add-host" onclick=""><img src="/resources/add.png"></button>
+			</section>
+			<section id="view-group">
+			<!-- Anything we need to change with regards to the users interaction. all else is template -->
 			</section>
 		</header>
 		<main>
