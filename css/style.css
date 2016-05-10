@@ -6,6 +6,7 @@ body, html {
 	font-family: Verdana, sans-serif;
 	padding: 0;
 	margin: 0;
+	background-color: #fdfdfd;
 }
 
 header, footer {
@@ -19,7 +20,6 @@ header > section {
 }
 
 main {
-	background-color: #fdfdfd;
 	padding: 1em;
 }
 
@@ -34,8 +34,9 @@ table {
 	width: 100%;
 }
 
-.host > td {
-	padding: 1em;
+td, th{
+    	border: 1px solid #aaa;
+	padding: 0.5em;
 }
 
 .host {
@@ -62,14 +63,37 @@ table {
 	float: right;
 }
 
-.host .manage-host-link {
+.add-host-link, .search-host-link, .manage-host-link, .delete-host-link, .save-host-link {
+    	background-size: 80% 80%;
+   	background-position: center;
+    	background-repeat: no-repeat;
+}
+
+.add-host-link {
+	background-image: url('/resources/add-icon.png');
+    	background-color: #5cb85c;
+}
+
+.search-host-link {
+	background-image: url('/resources/search-icon.png');
+    	background-color: #337ab7;
+}
+
+.delete-host-link {
+	background-image: url('/resources/delete-icon.png');
+    	background-color: #c9302c;
+}
+
+.save-host-link {
+	background-image: url('/resources/save-icon.png');
+    	background-color: #337ab7;
+}
+
+.manage-host-link {
 	display: inline-block;
 	float: right;
 	padding: 0.5em;
 	width: 3em;
 	background-image: url('/resources/manage-icon.png');
-    	background-size: 70% 70%;
     	background-color: #337ab7;
-    	background-position: center;
-    	background-repeat: no-repeat;
 }

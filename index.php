@@ -43,10 +43,10 @@
 			</section>
 			<section id="search-group">
 				<input type="text" id="search-bar">
-				<button class="btn btn-primary" id="search-host" onclick=""><img src="/resources/search-icon.png" height="15"></button>
+				<button class="btn search-host-link" onclick="">&nbsp;</button>
 			</section>
 			<section id="add-group">
-				<button class="btn btn-success" id="add-host" onclick=""><img src="/resources/add-icon.png" height="15"></button>
+				<button class="btn add-host-link" onclick="">&nbsp;</button>
 			</section>
 		</header>
 		<main>
