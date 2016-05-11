@@ -1,5 +1,4 @@
 <?php
-	//Gets the status of all servers for the homepage
 	function getStatus() {
 		include_once('database-connection.php');
 		$connection = new DatabaseConnection();
@@ -34,7 +33,7 @@
 		unset($connection);
 		return $rows;
 	}
-	// Outputs each host and status on the homepage
+
 	function outputHost($row) {
 		echo '<div class="host-container">';
 		echo '<a class="host-view-section btn btn-default btn-default-no-end-right" href="/view-host/' . $row['hostID'] . '" class="view-host-link">';
@@ -47,7 +46,7 @@
 			echo 'red';
 		}
 		echo '-icon.png" height="25">';
-		echo $row['hostName'];
+		echo '<span class="toggle-field" data-host-name="' . $row['hostName'] . '" data-ip-address="' . $row['hostIPAddress'] . '">' . $row['hostName'] . '</span>';
 		echo '</a>';
 		echo '<a href="/manage-host/' . $row['hostID'] . '" class="btn btn-default btn-default-no-end-left manage-host-link">&nbsp;</a>';
 		echo '</div>';
@@ -78,76 +77,9 @@
 		unset($connection);
 		return $rows;
 	}
-<<<<<<< HEAD
-	
-	/*	
-		Pings the destination address
-		Takes the IP address and Port number
-		Returns Error number if ping fails or 'Thumbs up' if ping returns successful
-	*/
-	function ping($address, $port) {
-		$start = microtime(true);
-		$fp = fsockopen($address, $port, $errno, $errstr, 30);
-		$stop = microtime(true);
-		$time = ($stop - $start) * 1000;
-		
-		if (!$fp) {
-			addToLog($errno, $hostId);
-		}
-		else if ($time > 500) {
-			//Set to orange
-		}
-		else {
-			//Set to green
-		}
-		fclose($fp);
-	}
-	
-	/*
-		Searches for host. Determines the whether the search term is an IP address, host name etc.
-		Takes a search term
-		Calls getHost()
-	*/
-	function searchHost($searchTerm) {
-		
-		getHost($hostId)
-	}
-
-	/*
-		Gets logs for the host from the database
-		Takes host ID
-	*/
-	function getHostLogs($hostId) {
-		
-	}
-	
-	/*
-		Adds error to error log
-		Takes host ID and fault ID
-	*/
-	function addToLog($hostId, $faultid) {
-		
-	}
-	
-	/*
-		Deletes log entries after set amount of time
-	*/
-	function deleteLogEntry() {
-		
-	}
-	
-	/*
-		Gets error information
-		Takes fault ID
-	*/
-	function getError($faultId) {
-		
-	}
-
-=======
 
 	function outputPing($row) {
-		echo '<tr>';
+		echo '<tr class="ping">';
 		echo '<td><img src="/resources/';
 		if ($row['faultIsError'] == 0) {
 			echo 'green';
@@ -207,9 +139,7 @@
 
 	}
 
-	function outputHostSummary($hostID) {
-		$host = getHost($hostID);
-
+	function outputHostSummary($host) {
 		echo $host['hostName'] . ' | ' . $host['hostOct1'] . '.' . $host['hostOct2'] . '.' . $host['hostOct3'] . '.' . $host['hostOct4'] . ' | ' . $host['hostPort'] . ' | ';
 		if ($host['hostStatus'] == 1) {
 			echo 'Active';
@@ -218,5 +148,4 @@
 		}
 		echo ' | ' . $host['hostDescription'];
 	}
->>>>>>> refs/remotes/origin/master
 ?>

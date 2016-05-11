@@ -22,20 +22,30 @@
 		}
 
 		function runQuery($query, $parameters) {
-			$db = $GLOBALS['db'];
+			try {
+				if ($parameters == NULL) {
+					$stmt = $GLOBALS['db']->query($query);
+				} else {
+					$stmt = $GLOBALS['db']->prepare($query);
+					$stmt->execute($parameters);
+				}
 
-			if ($parameters == NULL) {
-				$results = $db->query($query);
-			} else {
-				$results = $db->prepare($query);
-				$results->execute($parameters);
+				$results = null;
+				if (
+                                        strpos($query, 'INSERT') === FALSE &&
+				        strpos($query, 'UPDATE') === FALSE &&
+				        strpos($query, 'DELETE') === FALSE
+                                    ) {
+					$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				}
+				return $results;
+			} catch (PDOException $ex) {
+				echo '{"error":true,"description":"Error performing a query on the database - ' . getFriendlySQLError($ex) . '"}';
 			}
+		}
 
-			if (strpos($query, 'SELECT') !== FALSE || strpos($query, 'SHOW') !== FALSE) {
-				return $results->fetchAll(PDO::FETCH_ASSOC);
-			} else {
-				return null;
-			}
+		function lastInsertID() {
+			return $GLOBALS['db']->lastInsertId();
 		}
 		
 		function __destruct() {

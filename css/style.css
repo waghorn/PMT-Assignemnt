@@ -30,6 +30,15 @@ footer {
 	right: 0;
 }
 
+table {
+	width: 100%;
+}
+
+td, th {
+    	border: 1px solid #aaa;
+	padding: 0.5em;
+}
+
 .host {
 	display: inline-block;
 	margin: 0.5em 0;
@@ -128,24 +137,121 @@ footer {
 	background-color: #2b73b0;
 }
 
-.host-summary-container{
-	width: 100%;
-	color: white;
-	background-color: gray;
-	display: block;
-	font-size: 1.7em; 
-	padding: 0.5em
+
+.popup {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.4);
 }
 
-.host-summary-container > a{
-	float: right;
-	margin: 0;
+.popup > .message-box {
+    position: fixed;
+    top: 25%;
+    left: 16%;
+    right: 16%;
+    background-color: #fff;
+    padding: 1em;
+    color: #000;
+    border-radius: 5px;
 }
 
-.table{
-	text-align: center;
+.popup h1 {
+	margin: 0.2em 0;
 }
 
-.table th{
-	text-align: center;
+.info-message {
+	border: 1px solid #333;
+	padding: 0.5em;
+}
+
+.info-message.success {
+	background-color: #7cd87c;
+}
+
+/*On-Off generated css*/
+.onoffswitch {
+    position: relative;
+    width: 123px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #aaa;
+    border-radius: 0px;
+}
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-family: Trebuchet, Arial, sans-serif; 
+}
+.onoffswitch-inner:before {
+    content: "On";
+    padding-left: 10px;
+    background-color: #7CD87C;
+    color: #fff;
+}
+.onoffswitch-inner:after {
+    content: "Off";
+    padding-right: 10px;
+    background-color: #E99;
+    color: #fff;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block;
+    width: 18px;
+    margin: 6px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 92px;
+    border: 2px solid #999;
+    border-radius: 0px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.field-toggle .onoffswitch-inner:before {
+    content: "Host Name";
+}
+.field-toggle .onoffswitch-inner:after {
+    content: "IP Address";
+}
+
+.host-status .onoffswitch-inner:before {
+    content: "Active";
+}
+.host-status .onoffswitch-inner:after {
+    content: "Inactive";
 }

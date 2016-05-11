@@ -12,9 +12,7 @@
 			case 'add-host':
 			case 'update-host':
 			case 'delete-host':
-			case 'fetch-more-logs':
-			case 'fetch-more-hosts':
-				include_once('ajax/' . $action . '.php');
+				include_once('form-submission/' . $action . '.php');
 				break;
 			default:
 				$response = array('error' => true, 'description' => 'The action specified could not be found');
